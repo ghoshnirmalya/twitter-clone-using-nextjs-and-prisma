@@ -14,13 +14,13 @@ import AccessDeniedIndicator from "components/access-denied-indicator";
 import { useSession } from "next-auth/client";
 import React, { useState } from "react";
 
-const AddNewFeedForm = () => {
+const AddNewTweetForm = () => {
   const [body, setBody] = useState("");
   const [session] = useSession();
 
   if (!session) {
     return (
-      <AccessDeniedIndicator message="You need to be signed in to add a new feed!" />
+      <AccessDeniedIndicator message="You need to be signed in to add a new Tweet!" />
     );
   }
 
@@ -32,7 +32,7 @@ const AddNewFeedForm = () => {
     return (
       <Alert status="error">
         <AlertIcon />
-        <AlertTitle>insertFeedError</AlertTitle>
+        <AlertTitle>insertTweetError</AlertTitle>
         <CloseButton position="absolute" right="8px" top="8px" />
       </Alert>
     );
@@ -62,4 +62,4 @@ const AddNewFeedForm = () => {
   );
 };
 
-export default AddNewFeedForm;
+export default AddNewTweetForm;

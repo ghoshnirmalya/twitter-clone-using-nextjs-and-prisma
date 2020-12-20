@@ -1,12 +1,12 @@
 import { Avatar, Box, Stack, Text } from "@chakra-ui/react";
 import React, { FC } from "react";
-import IFeed from "types/feed";
+import ITweet from "types/tweet";
 
 interface IProps {
-  feed: IFeed;
+  tweet: ITweet;
 }
 
-const Feed: FC<IProps> = ({ feed }) => {
+const Tweet: FC<IProps> = ({ tweet }) => {
   const authorNode = () => {
     return (
       <Stack
@@ -16,9 +16,9 @@ const Feed: FC<IProps> = ({ feed }) => {
         p={4}
         borderBottomWidth={1}
       >
-        <Avatar name={feed.author.name} src={feed.author.image} />
+        <Avatar name={tweet.author.name} src={tweet.author.image} />
         <Stack>
-          <Text fontWeight="bold">{feed.author.name}</Text>
+          <Text fontWeight="bold">{tweet.author.name}</Text>
         </Stack>
       </Stack>
     );
@@ -27,7 +27,7 @@ const Feed: FC<IProps> = ({ feed }) => {
   const bodyNode = () => {
     return (
       <Text fontSize="md" p={4}>
-        {feed.body}
+        {tweet.body}
       </Text>
     );
   };
@@ -42,4 +42,4 @@ const Feed: FC<IProps> = ({ feed }) => {
   );
 };
 
-export default Feed;
+export default Tweet;

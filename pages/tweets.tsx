@@ -1,12 +1,16 @@
+import { PrismaClient } from "@prisma/client";
 import AccessDeniedIndicator from "components/access-denied-indicator";
-import Page from "components/pages/feeds";
+import Page from "components/pages/tweets";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { getSession } from "next-auth/client";
 import Head from "next/head";
 import React from "react";
 
-const FeedsPage: InferGetServerSidePropsType<typeof getServerSideProps> = ({
+const prisma = new PrismaClient();
+
+const TweetsPage: InferGetServerSidePropsType<typeof getServerSideProps> = ({
   session,
+  tweets,
 }) => {
   if (!session) {
     return <AccessDeniedIndicator />;
@@ -15,21 +19,27 @@ const FeedsPage: InferGetServerSidePropsType<typeof getServerSideProps> = ({
   return (
     <>
       <Head>
-        <title>Feeds Page</title>
+        <title>Tweets Page</title>
       </Head>
-      <Page />
+      <Page tweets={tweets} />
     </>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const session = await getSession({ req });
+  const tweets = await prisma.tweet.findMany({
+    include: {
+      author: true,
+    },
+  });
 
   return {
     props: {
       session,
+      tweets,
     },
   };
 };
 
-export default FeedsPage;
+export default TweetsPage;

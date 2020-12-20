@@ -3,4 +3,7 @@ export default interface IUser {
   name: string;
   image: string;
   email: string;
+  emailVerified: null | Boolean;
+  createdAt: Date;
+  updatedAt: Date;
 }

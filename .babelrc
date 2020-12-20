@@ -1,0 +1,6 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    "superjson-next" // See https://github.com/vercel/next.js/discussions/11498#discussioncomment-147597
+  ]
+}
