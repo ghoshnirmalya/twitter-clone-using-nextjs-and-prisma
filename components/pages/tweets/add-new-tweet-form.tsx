@@ -1,22 +1,31 @@
 import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
   Box,
   Button,
-  CloseButton,
   FormControl,
   FormLabel,
   Stack,
   Textarea,
 } from "@chakra-ui/react";
 import AccessDeniedIndicator from "components/access-denied-indicator";
+import saveTweet from "lib/mutations/save-tweet";
+import fetchTweets from "lib/queries/fetch-tweets";
 import { useSession } from "next-auth/client";
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
+import { QueryClient, useMutation, useQuery } from "react-query";
+
+const queryClient = new QueryClient();
 
 const AddNewTweetForm = () => {
   const [body, setBody] = useState("");
   const [session] = useSession();
+  const { refetch } = useQuery("tweets", fetchTweets);
+  const mutation = useMutation(saveTweet, {
+    onSuccess: async () => {
+      await queryClient.invalidateQueries("tweets");
+
+      refetch();
+    },
+  });
 
   if (!session) {
     return (
@@ -24,28 +33,34 @@ const AddNewTweetForm = () => {
     );
   }
 
-  const handleSubmit = async () => {
-    setBody("");
-  };
+  const handleSubmit = () => {
+    const data = {
+      body,
+      author: {
+        connect: { email: session.user.email },
+      },
+    };
 
-  const errorNode = () => {
-    return (
-      <Alert status="error">
-        <AlertIcon />
-        <AlertTitle>insertTweetError</AlertTitle>
-        <CloseButton position="absolute" right="8px" top="8px" />
-      </Alert>
-    );
+    mutation.mutate(data);
+
+    if (!mutation.error) {
+      setBody("");
+    }
   };
 
   return (
     <Stack spacing={4}>
-      {errorNode()}
       <Box p={4} shadow="lg" rounded="lg">
         <Stack spacing={4}>
           <FormControl isRequired>
             <FormLabel htmlFor="body">What's on your mind?</FormLabel>
-            <Textarea id="body" value={body} />
+            <Textarea
+              id="body"
+              value={body}
+              onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+                setBody(e.currentTarget.value)
+              }
+            />
           </FormControl>
           <FormControl>
             <Button

@@ -10,7 +10,7 @@ const TweetsPageComponent = ({ tweets }) => {
       <Box>
         <AddNewTweetForm />
       </Box>
-      {tweets.map((tweet: ITweet) => {
+      {tweets?.map((tweet: ITweet) => {
         return (
           <Box key={tweet.id}>
             <Tweet tweet={tweet} />
