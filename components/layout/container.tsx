@@ -3,8 +3,8 @@ import React, { FC } from "react";
 
 const Container: FC = ({ children }) => {
   return (
-    <Box p={4} fontSize="sm">
-      <Box maxW="xl" mx="auto">
+    <Box p={8} fontSize="sm">
+      <Box maxW="4xl" mx="auto">
         {children}
       </Box>
     </Box>

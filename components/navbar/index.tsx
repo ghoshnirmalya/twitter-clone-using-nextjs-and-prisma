@@ -22,9 +22,9 @@ const Navbar: NextComponentType = () => {
       href: "/tweets",
     },
     {
-      id: "myAccount",
-      label: "My Account",
-      href: "/my-account",
+      id: "users",
+      label: "Users",
+      href: "/users",
     },
   ];
 
@@ -73,7 +73,7 @@ const Navbar: NextComponentType = () => {
   return (
     <Box>
       <Box p={4} shadow="lg" pos="relative">
-        <Box maxW="xl" mx="auto" w="full">
+        <Box maxW="4xl" mx="auto" w="full">
           <Stack
             isInline
             spacing={4}

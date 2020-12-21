@@ -1,3 +1,5 @@
+import ITweet from "./tweet";
+
 export default interface IUser {
   id: number;
   name: string;
@@ -6,4 +8,5 @@ export default interface IUser {
   emailVerified: null | Boolean;
   createdAt: Date;
   updatedAt: Date;
+  tweets?: ITweet[];
 }
