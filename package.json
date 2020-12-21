@@ -6,13 +6,16 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "prisma:studio": "prisma studio",
+    "prisma:migration": "prisma migrate dev --preview-feature",
+    "prisma:introspect": "prisma introspect"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",
     "@chakra-ui/icons": "^1.0.2",
     "@chakra-ui/react": "^1.0.4",
-    "@emotion/react": "^11.1.2",
+    "@emotion/react": "^11.1.3",
     "@emotion/styled": "^11.0.0",
     "@prisma/client": "^2.13.1",
     "babel-plugin-superjson-next": "^0.1.8",

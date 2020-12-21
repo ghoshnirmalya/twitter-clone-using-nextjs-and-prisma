@@ -1,6 +1,6 @@
 import AccessDeniedIndicator from "components/access-denied-indicator";
-import Page from "components/pages/tweets";
-import fetchTweets from "lib/queries/fetch-tweets";
+import Page from "components/pages/users/[id]";
+import fetchUser from "lib/queries/fetch-user";
 import queryClient from "lib/react-query-client";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { getSession } from "next-auth/client";
@@ -9,12 +9,11 @@ import React from "react";
 import { useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
 
-const TweetsPage: InferGetServerSidePropsType<typeof getServerSideProps> = ({
+const MyAccountPage: InferGetServerSidePropsType<typeof getServerSideProps> = ({
   session,
+  id,
 }) => {
-  const { data } = useQuery("tweets", fetchTweets, {
-    refetchInterval: 5000,
-  });
+  const { data } = useQuery("user", () => fetchUser(parseInt(id as string)));
 
   if (!session) {
     return <AccessDeniedIndicator />;
@@ -23,24 +22,30 @@ const TweetsPage: InferGetServerSidePropsType<typeof getServerSideProps> = ({
   return (
     <>
       <Head>
-        <title>Tweets Page</title>
+        <title>My Account Page</title>
       </Head>
-      <Page tweets={data} />
+      <Page user={data} />
     </>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  query,
+}) => {
   const session = await getSession({ req });
 
-  await queryClient.prefetchQuery("tweets", fetchTweets);
+  await queryClient.prefetchQuery("user", () =>
+    fetchUser(parseInt(query.id as string))
+  );
 
   return {
     props: {
       session,
       dehydratedState: dehydrate(queryClient),
+      id: query.id,
     },
   };
 };
 
-export default TweetsPage;
+export default MyAccountPage;

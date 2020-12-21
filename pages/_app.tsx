@@ -1,16 +1,16 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "components/layout";
+import queryClient from "lib/react-query-client";
 import { Provider as NextAuthProvider } from "next-auth/client";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { Hydrate } from "react-query/hydration";
+import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { Hydrate } from "react-query/hydration";
 
 const App = ({ Component, pageProps }: AppProps) => {
   const { session } = pageProps;
-  const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
