@@ -1,4 +1,4 @@
-<h1 align="center">Twwitter clone using Next.js and Prisma</h1>
+<h1 align="center">Twitter clone using Next.js and Prisma</h1>
 
 <p align="center">
   <a href="https://twitter.com/nirmalyaghosh23">
