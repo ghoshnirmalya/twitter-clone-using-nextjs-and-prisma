@@ -1,4 +1,14 @@
-import { Box, Button, Flex, Heading, Stack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  List,
+  ListItem,
+  Stack,
+  Text,
+  Link as ChakraLink,
+} from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/client";
 import Link from "next/link";
 import React from "react";
@@ -53,6 +63,18 @@ const IndexPageComponent = () => {
       <Flex justifyContent="center" alignItems="center">
         <Stack spacing={4} maxW="xl" mx="auto">
           <Heading textAlign="center">Nextjs Prisma</Heading>
+          <Text fontSize="xl" textAlign="center">
+            This is a sample application to show how to make Next.js work with
+            Prisma. You can{" "}
+            <Link href="/tweets">
+              <ChakraLink>view all tweets</ChakraLink>
+            </Link>{" "}
+            or{" "}
+            <Link href="/users">
+              <ChakraLink>view all users</ChakraLink>
+            </Link>
+            .
+          </Text>
           <Box>
             <Stack isInline align="center" justifyContent="center">
               {signInButtonNode()}

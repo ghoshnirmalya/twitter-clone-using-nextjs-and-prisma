@@ -12,10 +12,10 @@ const UsersPageComponent: FC<IProps> = ({ user }) => {
   const authorNode = () => {
     return (
       <Stack spacing={4} isInline alignItems="center">
-        <Avatar name={user.name} src={user.image} />
+        <Avatar name={user?.name} src={user?.image} />
         <Stack>
           <Text fontWeight="bold" fontSize="4xl">
-            {user.name}
+            {user?.name}
           </Text>
         </Stack>
       </Stack>
