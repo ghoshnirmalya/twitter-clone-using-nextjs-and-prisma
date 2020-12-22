@@ -1,4 +1,5 @@
 import { Avatar, Box, Stack, Text } from "@chakra-ui/react";
+import timeFromNow from "lib/time-from-now";
 import React, { FC } from "react";
 import ITweet from "types/tweet";
 
@@ -19,6 +20,7 @@ const Tweet: FC<IProps> = ({ tweet }) => {
         <Avatar name={tweet.author.name} src={tweet.author.image} />
         <Stack>
           <Text fontWeight="bold">{tweet.author.name}</Text>
+          <Text>{timeFromNow(tweet.createdAt)}</Text>
         </Stack>
       </Stack>
     );

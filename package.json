@@ -20,6 +20,7 @@
     "@emotion/styled": "^11.0.0",
     "@prisma/client": "^2.13.1",
     "babel-plugin-superjson-next": "^0.1.8",
+    "dayjs": "^1.9.7",
     "framer-motion": "^3.1.1",
     "next": "^10.0.3",
     "next-auth": "^3.1.0",

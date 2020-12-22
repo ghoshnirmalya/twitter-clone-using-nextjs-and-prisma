@@ -1,4 +1,4 @@
-import { Avatar, Box, Stack, Text, Link as ChakraLink } from "@chakra-ui/react";
+import { Avatar, Box, Stack, Text, Button } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { FC } from "react";
 import IUser from "types/user";
@@ -33,17 +33,24 @@ const User: FC<IProps> = ({ user }) => {
     );
   };
 
+  const buttonNode = () => {
+    return (
+      <Box p={4} borderTopWidth={1}>
+        <Link href={`/users/${user.id}`}>
+          <Button>View profile</Button>
+        </Link>
+      </Box>
+    );
+  };
+
   return (
-    <Link href={`/users/${user.id}`}>
-      <ChakraLink>
-        <Box shadow="lg" rounded="lg">
-          <Stack spacing={0}>
-            {authorNode()}
-            {bodyNode()}
-          </Stack>
-        </Box>
-      </ChakraLink>
-    </Link>
+    <Box shadow="lg" rounded="lg">
+      <Stack spacing={0}>
+        {authorNode()}
+        {bodyNode()}
+        {buttonNode()}
+      </Stack>
+    </Box>
   );
 };
 
