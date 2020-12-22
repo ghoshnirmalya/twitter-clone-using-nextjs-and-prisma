@@ -7,8 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "prisma:generate": "prisma generate",
     "prisma:studio": "prisma studio",
-    "prisma:migration": "prisma migrate dev --preview-feature",
+    "prisma:migrate": "prisma migrate dev --preview-feature",
     "prisma:introspect": "prisma introspect"
   },
   "dependencies": {
@@ -22,10 +23,10 @@
     "framer-motion": "^3.1.1",
     "next": "^10.0.3",
     "next-auth": "^3.1.0",
+    "pg": "^8.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-query": "^3.4.0",
-    "sqlite3": "^5.0.0",
     "superjson": "^1.4.1"
   },
   "devDependencies": {

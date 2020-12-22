@@ -1,4 +1,4 @@
-import prisma from "lib/prisma-client";
+import prisma from "lib/clients/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
 import Adapters from "next-auth/adapters";

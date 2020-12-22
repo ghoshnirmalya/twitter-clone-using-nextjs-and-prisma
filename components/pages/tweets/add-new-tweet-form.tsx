@@ -9,7 +9,7 @@ import {
 import AccessDeniedIndicator from "components/access-denied-indicator";
 import saveTweet from "lib/mutations/save-tweet";
 import fetchTweets from "lib/queries/fetch-tweets";
-import queryClient from "lib/react-query-client";
+import queryClient from "lib/clients/react-query";
 import { useSession } from "next-auth/client";
 import React, { ChangeEvent, useState } from "react";
 import { useMutation, useQuery } from "react-query";

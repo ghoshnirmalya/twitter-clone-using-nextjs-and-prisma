@@ -1,20 +1,21 @@
 import AccessDeniedIndicator from "components/access-denied-indicator";
 import Page from "components/pages/tweets";
 import fetchTweets from "lib/queries/fetch-tweets";
-import queryClient from "lib/react-query-client";
+import queryClient from "lib/clients/react-query";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { getSession } from "next-auth/client";
+import { getSession, useSession } from "next-auth/client";
 import Head from "next/head";
 import React from "react";
 import { useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
 
-const TweetsPage: InferGetServerSidePropsType<typeof getServerSideProps> = ({
-  session,
-}) => {
+const TweetsPage: InferGetServerSidePropsType<
+  typeof getServerSideProps
+> = ({}) => {
   const { data } = useQuery("tweets", fetchTweets, {
     refetchInterval: 5000,
   });
+  const [session] = useSession();
 
   if (!session) {
     return <AccessDeniedIndicator />;

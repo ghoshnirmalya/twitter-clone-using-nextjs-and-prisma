@@ -1,19 +1,19 @@
 import AccessDeniedIndicator from "components/access-denied-indicator";
 import Page from "components/pages/users/[id]";
 import fetchUser from "lib/queries/fetch-user";
-import queryClient from "lib/react-query-client";
+import queryClient from "lib/clients/react-query";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { getSession } from "next-auth/client";
+import { getSession, useSession } from "next-auth/client";
 import Head from "next/head";
 import React from "react";
 import { useQuery } from "react-query";
 import { dehydrate } from "react-query/hydration";
 
 const MyAccountPage: InferGetServerSidePropsType<typeof getServerSideProps> = ({
-  session,
   id,
 }) => {
   const { data } = useQuery("user", () => fetchUser(parseInt(id as string)));
+  const [session] = useSession();
 
   if (!session) {
     return <AccessDeniedIndicator />;

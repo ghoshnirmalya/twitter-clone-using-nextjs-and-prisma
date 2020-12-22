@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import Layout from "components/layout";
-import queryClient from "lib/react-query-client";
+import queryClient from "lib/clients/react-query";
 import { Provider as NextAuthProvider } from "next-auth/client";
 import { AppProps } from "next/app";
 import Head from "next/head";
@@ -10,15 +10,13 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { Hydrate } from "react-query/hydration";
 
 const App = ({ Component, pageProps }: AppProps) => {
-  const { session } = pageProps;
-
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>
         <Head>
           <link rel="shortcut icon" href="/images/favicon.ico" />
         </Head>
-        <NextAuthProvider session={session}>
+        <NextAuthProvider session={pageProps.session}>
           <ChakraProvider>
             <Layout>
               <Component {...pageProps} />
