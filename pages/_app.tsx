@@ -6,7 +6,6 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 import React from "react";
 import { QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
 import { Hydrate } from "react-query/hydration";
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -24,7 +23,6 @@ const App = ({ Component, pageProps }: AppProps) => {
           </ChakraProvider>
         </NextAuthProvider>
       </Hydrate>
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 };

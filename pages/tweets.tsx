@@ -24,7 +24,7 @@ const TweetsPage: InferGetServerSidePropsType<
   return (
     <>
       <Head>
-        <title>Tweets Page</title>
+        <title>All tweets</title>
       </Head>
       <Page tweets={data} />
     </>

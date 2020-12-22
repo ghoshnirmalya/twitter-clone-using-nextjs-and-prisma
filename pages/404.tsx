@@ -7,7 +7,7 @@ const Custom404Page: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Error Page</title>
+        <title>404</title>
       </Head>
       <Page statusCode={404} />
     </>

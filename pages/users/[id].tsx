@@ -22,7 +22,7 @@ const MyAccountPage: InferGetServerSidePropsType<typeof getServerSideProps> = ({
   return (
     <>
       <Head>
-        <title>My Account Page</title>
+        <title>{session.user.name}'s profile</title>
       </Head>
       <Page user={data} />
     </>

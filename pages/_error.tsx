@@ -11,7 +11,7 @@ const Error: NextPage<iProps> = ({ statusCode }) => {
   return (
     <>
       <Head>
-        <title>Error Page</title>
+        <title>Error</title>
       </Head>
       <Page statusCode={statusCode} />
     </>
