@@ -12,9 +12,7 @@ import { dehydrate } from "react-query/hydration";
 const TweetsPage: InferGetServerSidePropsType<
   typeof getServerSideProps
 > = ({}) => {
-  const { data } = useQuery("tweets", fetchTweets, {
-    refetchInterval: 5000,
-  });
+  const { data } = useQuery("tweets", fetchTweets);
   const [session] = useSession();
 
   if (!session) {
