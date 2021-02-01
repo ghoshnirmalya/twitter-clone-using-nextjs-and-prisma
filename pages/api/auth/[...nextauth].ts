@@ -1,5 +1,4 @@
 import prisma from "lib/clients/prisma";
-import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
 import Adapters from "next-auth/adapters";
 import Providers from "next-auth/providers";
@@ -14,7 +13,4 @@ const options = {
   adapter: Adapters.Prisma.Adapter({ prisma }),
 };
 
-const Auth = (req: NextApiRequest, res: NextApiResponse) =>
-  NextAuth(req, res, options);
-
-export default Auth;
+export default NextAuth(options);
