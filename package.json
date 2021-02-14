@@ -10,7 +10,8 @@
     "prisma:generate": "prisma generate",
     "prisma:studio": "prisma studio",
     "prisma:migrate": "prisma migrate dev --preview-feature",
-    "prisma:introspect": "prisma introspect"
+    "prisma:introspect": "prisma introspect",
+    "prisma:seed": "prisma db seed --preview-feature"
   },
   "dependencies": {
     "@babel/core": "^7.12.10",
@@ -18,24 +19,27 @@
     "@chakra-ui/react": "^1.2.1",
     "@emotion/react": "^11.1.4",
     "@emotion/styled": "^11.0.0",
-    "@prisma/client": "2.15.0",
+    "@prisma/client": "2.16.1",
     "babel-plugin-superjson-next": "^0.2.1",
     "dayjs": "^1.10.4",
     "framer-motion": "^3.2.1",
     "next": "^10.0.6",
     "next-auth": "^3.2.0",
     "pg": "^8.5.1",
+    "prisma": "^2.16.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-query": "^3.6.0",
     "superjson": "^1.5.2"
   },
   "devDependencies": {
-    "@prisma/cli": "2.15.0",
+    "@types/faker": "^5.1.6",
     "@types/next": "^9.0.0",
     "@types/node": "^14.14.22",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "faker": "^5.4.0",
+    "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
   }
 }
