@@ -27,7 +27,7 @@ const User: FC<IProps> = ({ user }) => {
 
   const buttonNode = () => {
     return (
-      <Box p={4} borderTopWidth={1}>
+      <Box p={4}>
         <Link href={`/users/${user.id}`}>
           <Button>View profile</Button>
         </Link>
