@@ -25,14 +25,6 @@ const User: FC<IProps> = ({ user }) => {
     );
   };
 
-  const bodyNode = () => {
-    return (
-      <Text fontSize="md" p={4}>
-        {user.email}
-      </Text>
-    );
-  };
-
   const buttonNode = () => {
     return (
       <Box p={4} borderTopWidth={1}>
@@ -47,7 +39,6 @@ const User: FC<IProps> = ({ user }) => {
     <Box shadow="lg" rounded="lg">
       <Stack spacing={0}>
         {authorNode()}
-        {bodyNode()}
         {buttonNode()}
       </Stack>
     </Box>
